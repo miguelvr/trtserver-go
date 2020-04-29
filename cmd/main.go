@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/disintegration/imaging"
 	trtclient "github.com/miguelvr/trtserver-go/pkg/client"
@@ -11,12 +12,23 @@ import (
 )
 
 const (
-	URL       = "localhost:8001"
-	modelName = "resnet50_imagenet"
+	URL          = "localhost:8001"
+	modelName    = "resnet50_imagenet"
+	labelMapFile = "assets/imagenet_labels.txt"
 )
 
 func main() {
 	imagePath := "assets/white_shark.jpg"
+
+	r, err := os.Open(labelMapFile)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	labelMap, err := trtclient.ReadLabels(r)
+	if err != nil {
+		log.Fatalf("error reading label map file: %v", err)
+	}
 
 	// Connect to gRPC server
 	conn, err := grpc.Dial(URL, grpc.WithInsecure())
@@ -56,5 +68,8 @@ func main() {
 		log.Fatalf("could not decode response: %v", err)
 	}
 
-	fmt.Printf("Inference Response: {\"label\": %d, \"score\": %f}", label, prob)
+	fmt.Printf(
+		"Inference Response: {\"label\": %s, \"label_id\": %d, \"score\": %f}",
+		(*labelMap)[label], label, prob,
+	)
 }
