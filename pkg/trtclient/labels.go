@@ -1,4 +1,4 @@
-package client
+package trtclient
 
 import (
 	"bufio"

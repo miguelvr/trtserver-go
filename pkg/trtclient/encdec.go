@@ -1,4 +1,4 @@
-package client
+package trtclient
 
 import (
 	"bytes"
@@ -7,7 +7,7 @@ import (
 	"image"
 
 	"github.com/disintegration/imaging"
-	trtis "github.com/miguelvr/trtserver-go/pkg/gen/nvidia_inferenceserver"
+	trtis "github.com/miguelvr/trtserver-go/pkg/trtclient/nvidia_inferenceserver"
 )
 
 // EncodeRequest preprocesses and encodes an image into an array of bytes (assumes Little Endian)

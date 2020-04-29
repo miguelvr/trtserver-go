@@ -1,11 +1,11 @@
-package client
+package trtclient
 
 import (
 	"context"
 	"log"
 	"time"
 
-	trtis "github.com/miguelvr/trtserver-go/pkg/gen/nvidia_inferenceserver"
+	trtis "github.com/miguelvr/trtserver-go/pkg/trtclient/nvidia_inferenceserver"
 )
 
 type Client struct {
