@@ -1,4 +1,4 @@
-package trtclient
+package utils
 
 import (
 	"strings"
