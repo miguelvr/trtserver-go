@@ -51,3 +51,7 @@ To remove the created model artifacts and binaries by the build command run:
 ```shell script
 make clean
 ```
+
+## Metrics
+
+You can access the server metrics by accessing to http://localhost:8002/metrics
