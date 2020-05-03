@@ -6,6 +6,7 @@ proto:
 	bash $(PWD)/scripts/gen_proto.sh
 
 build:
+	pip install torch==1.4.0 torchvision==0.5.0
 	python $(PWD)/scripts/trace.py
 	go build -o predict cmd/predict/main.go
 
