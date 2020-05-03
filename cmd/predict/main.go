@@ -16,6 +16,7 @@ import (
 const (
 	URL          = "localhost:8001"
 	modelName    = "resnet50_imagenet"
+	modelVersion = 1
 	labelMapFile = "assets/imagenet_labels.txt"
 )
 
@@ -94,7 +95,7 @@ func main() {
 			BatchSize: 1,
 		},
 		ModelName:    modelName,
-		ModelVersion: 1,
+		ModelVersion: modelVersion,
 		EncoderFunc:  encodeRequest,
 		DecoderFunc:  decodeResponse,
 	}
