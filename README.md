@@ -21,7 +21,12 @@ An example is provided by serving a torchvision ResNet-50 model pre-trained on I
 
 ## Getting Started
 
+### Local Environment
+
 Trace the ResNet-50 model and build the corresponding Go Triton Client.
+
+**Note:** This step installs python dependencies, so it is recommended to create a virtual environment for it.
+
 ```shell script
 make build
 ``` 
@@ -50,6 +55,20 @@ make down
 To remove the created model artifacts and binaries by the build command run:
 ```shell script
 make clean
+```
+
+### Docker
+
+You can reproduce the same steps with docker.
+
+Build and run the server and client container:
+```shell script
+docker-compose -f docker/docker-compose.yml up
+```
+
+Request a prediction with the Go client
+```shell script
+docker run --network=host -v ${PWD}/assets:/assets --rm -it trtclient ./predict assets/white_shark.jpg 
 ```
 
 ## Metrics
