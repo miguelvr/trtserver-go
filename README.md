@@ -7,7 +7,7 @@ NVIDIA's Triton Inference Server (TRT Server) and a Go client.
 
 The Pytorch model is served by the TRT Server using libtorch and C++, 
 which can only handle binary inputs and outputs. 
-The goal of the Go client is to pre-processe the input, encode the inputs and 
+The goal of the Go client is to pre-process the input, encode the inputs and 
 decode the outputs from the communication with the TRT Server.
 
 An example is provided by serving a torchvision ResNet-50 model pre-trained on ImageNet.
