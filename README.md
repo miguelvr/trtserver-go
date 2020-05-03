@@ -21,19 +21,19 @@ An example is provided by serving a torchvision ResNet-50 model pre-trained on I
 
 ## Getting Started
 
-Start the docker container
-```shell script
-make up
-```
-
 Trace the ResNet-50 model and build the corresponding Go Triton Client.
 ```shell script
 make build
 ``` 
 
-You can now send a prediction with the Go client to the Trtiton Server
+Start the docker container
 ```shell script
-./predict
+make up
+```
+
+You can now send a prediction with the Go client to the Triton Server
+```shell script
+./predict assets/white_shark.jpg
 ```
 
 Whenever you are done, take down the running triton inference server run the following:
