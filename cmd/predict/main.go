@@ -63,7 +63,12 @@ func decodeResponse(inferResponse *trtis.InferResponse) (interface{}, error) {
 }
 
 func main() {
-	imagePath := "assets/white_shark.jpg"
+	args := os.Args[1:]
+	if len(args) != 1 {
+		log.Fatal("Usage: predict [IMAGE_PATH]")
+	}
+
+	imagePath := args[0]
 
 	r, err := os.Open(labelMapFile)
 	if err != nil {
@@ -121,7 +126,7 @@ func main() {
 
 	output := response.(ResNetOutput)
 	fmt.Printf(
-		"Inference Response: {\"label\": %s, \"label_id\": %d, \"score\": %f}",
+		"Inference Response: {\"label\": %s, \"label_id\": %d, \"score\": %f}\n",
 		(*labelMap)[output.Label], output.Label, output.Probability,
 	)
 }
