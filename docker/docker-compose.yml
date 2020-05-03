@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  trtserver:
+    image: nvcr.io/nvidia/tritonserver:20.03-py3
+    ipc: host
+    ports:
+      - 8000:8000
+      - 8001:8001
+      - 8002:8002
+    volumes:
+      - ${PWD}/assets/models:/models
+    command: trtserver --model-repository /models
+
+  trtclient:
+    image: trtclient
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - trtserver
